@@ -1,0 +1,27 @@
+{
+    "name": "restorando/restorando-api",
+    "type": "library",
+    "description": "Restorando API client",
+    "homepage": "https://github.com/restorando/php-restorando-api",
+    "keywords": ["restorando", "api", "gist"],
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Restorando",
+            "homepage": "http://restorando.com"
+        },
+        {
+            "name": "Restorando",
+            "email": "devs@restorando.com",
+            "homepage": "http://restorando.com"
+        }
+    ],
+    "require": {
+        "php":                ">=5.3.2",
+        "ext-curl":           "*",
+        "kriswallsmith/buzz": ">=0.7"
+    },
+    "autoload": {
+        "psr-0": { "Restorando\\": "lib/" }
+    }
+}
