@@ -12,9 +12,14 @@ class Restaurant extends AbstractApi
         return $this->get('restaurants');
     }
 
-    public function show($id)
+    public function fetch($id)
     {
         return $this->get('restaurants/'.urlencode($id));
+    }
+
+    public function availability($id, $date, $diners)
+    {
+        return $this->get('restaurants/'.urlencode($id) . "/".urlencode($date), array("diners" => $diners));
     }
 
 }
