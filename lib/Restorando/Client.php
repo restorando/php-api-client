@@ -30,8 +30,6 @@ class Client
      */
     const AUTH_HTTP_TOKEN = 'http_token';
 
-    const VALID_API_VERSIONS = array(null);
-
     /**
      * @var array
      */
@@ -139,6 +137,11 @@ class Client
         $this->getHttpClient()->clearHeaders();
     }
 
+    public function setRegion($country)
+    {
+        $this->setHeaders(array("X-REDO-REGION" => $country));
+    }
+
     /**
      * @param array $headers
      */
@@ -177,8 +180,8 @@ class Client
             throw new InvalidArgumentException(sprintf('Undefined option called: "%s"', $name));
         }
 
-        if ('api_version' == $name && !in_array($value, self::VALID_API_VERSIONS)) {
-            throw new InvalidArgumentException(sprintf('Invalid API version ("%s"), valid are: %s', $name, implode(', ', self::VALID_API_VERSIONS)));
+        if ('api_version' == $name && !in_array($value, array(null) )) {
+            throw new InvalidArgumentException(sprintf('Invalid API version ("%s"), valid are: (none)', $name));
         }
 
         $this->options[$name] = $value;
