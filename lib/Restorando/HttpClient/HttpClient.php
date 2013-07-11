@@ -101,6 +101,7 @@ class HttpClient implements HttpClientInterface
     public function clearHeaders()
     {
         $this->headers = array(
+            'Content-Type: application/json',
             'Accept: application/json',
             sprintf('User-Agent: %s', $this->options['user_agent']),
         );
