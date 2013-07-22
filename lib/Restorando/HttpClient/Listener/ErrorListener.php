@@ -56,11 +56,11 @@ class ErrorListener implements ListenerInterface
                     foreach ($content['errors'] as $error) {
                         switch ($error['code']) {
                             case 'missing_field':
-                                $errors[] = sprintf('Field "%s" is missing, for resource "%s"', $error['field'], $error['resource']);
+                                $errors[] = sprintf('Field "%s" is missing', $error['field']);
                                 break;
 
                             case 'invalid':
-                                $errors[] = sprintf('Field "%s" is invalid, for resource "%s"', $error['field'], $error['resource']);
+                                $errors[] = sprintf('Field "%s" is invalid', $error['field']);
                                 break;
 
                             default:
@@ -70,7 +70,7 @@ class ErrorListener implements ListenerInterface
                         }
                     }
 
-                    throw new ValidationFailedException('Validation Failed: ' . implode(', ', $errors), 422);
+                    throw new ValidationFailedException('Validation Failed: ' . implode(', ', $errors), 422, $content['errors']);
                 }
             }
 
